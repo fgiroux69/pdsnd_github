@@ -15,14 +15,14 @@ def city_select():
     '''
     print('Hi! Let\'s explore with you some US bikeshare data!')
     print(' ')
-    
+
 # get user input for city (chicago, new york city, washington). HINT: Use a while loop to handle invalid inputs
     print('Which city do you want to analyze?')
     print('Chicago, New York or Washington')
     print(' ')
     city = input('Please write the first character of city name for which you would like to see more info: ')
     city = city.lower()
-    while True:    
+    while True:
             if city  == 'c':
                 print("\n Your choice is Chicago City\n")
                 return 'chicago'
@@ -49,8 +49,8 @@ def select_time():
     print(' ')
     period = input('Please write the filter that you would like to apply to the data:')
     period = period.lower()
-     
-    while True: 
+
+    while True:
         if period == "month":
             print('\n The data will be filtered by month.\n')
             return 'month'
@@ -60,11 +60,11 @@ def select_time():
         elif period == "no":
             print('\n No filter will be applied to the data.\n')
             return "none"
-        else: 
+        else:
             period = input(f'Sorry, "{period}" is not a valid choice. Type the period filter:')
             print('\nPlease choose a period filter\n')
             period = period.lower()
-                            
+
 # Ask user to select a month (january to june)
 def month_data(mth_sel):
     if mth_sel == 'month':
@@ -84,9 +84,9 @@ def month_data(mth_sel):
 
 
 # Ask the user to select a day of the week
-def day_data(day_sel):       
+def day_data(day_sel):
     if day_sel == 'day_of_week':
-        print("\n Which day do you want to analyse? \n")          
+        print("\n Which day do you want to analyse? \n")
         print('Sunday:      Su')
         print('Monday:      M')
         print('Tuesday:     Tu')
@@ -100,7 +100,7 @@ def day_data(day_sel):
         return day.lower().strip()
     else:
         return 'none'
-        
+
 
 def load_file(city):
     #This function loads the data for the specified city
@@ -117,7 +117,7 @@ def filters(df, time, month, week_day):
     '''
     This section of the program will filter the data according to the criterias of the user:
     -city (Chicago, New York or Washington)
-    -time (day, month, day of the week or no filter) 
+    -time (day, month, day of the week or no filter)
     '''
     #Filter by Month
     if time == 'month':
@@ -132,14 +132,14 @@ def filters(df, time, month, week_day):
             if week_day.capitalize() in day_sel:
                 day_of_week = day_sel
         df = df[df['day_of_week'] == day_of_week]
-    
+
     return df
 
 def freq_stat(df):
     '''What is the most popular times of travel?
     '''
     months = ['january', 'february', 'march', 'april', 'may', 'june']
-    m = df.month.mode()[0]  
+    m = df.month.mode()[0]
     print('\n 1. Statitics on the most frequent times of travel:')
     popular_month= months[m - 1].capitalize()
     print('\n - The most popular month for bike traveling is ' + str(popular_month) + "\n")
@@ -148,7 +148,7 @@ def freq_stat(df):
     popular_hour = df['Start Time'].dt.hour.mode()[0]
     print('\n - The most popular hour of the day for bike traveling is '+ str(popular_hour) + "\n")
     return  popular_month, popular_day, popular_hour
-  
+
 def station_start_end(df):
     '''What is the most popular stations and tripl?
     '''
@@ -210,7 +210,7 @@ def gender_data(df):
         return df['Gender'].value_counts()
     except:
         print('There is no gender data for this analyse.')
-    
+
 def process(f, df):
     '''Calculates the time it takes to commpute statistics
     '''
@@ -224,7 +224,7 @@ def disp_data(df):
     Displays the data that program used to compile the statistics
     Input:
         the df shows the bikeshare data
-    Returns: 
+    Returns:
        none
     '''
     df = df.drop(['day_of_month'], axis = 1)
@@ -240,7 +240,7 @@ def disp_data(df):
         bike_data = input("\n Would you like to see five more rows? Please write 'y' or 'n' \n").lower()
 
 def main():
-    '''This function computes and shows the 
+    '''This function computes and shows the
     statistics for the requested city
     '''
     # This code executes the functions step by step
@@ -249,24 +249,23 @@ def main():
     period = select_time()
     month = month_data(period)
     day = day_data(period)
-    
+
     df = filters(df, period, month, day)
     disp_data(df)
-    
+
     # display the requested statistics
     function_step = [freq_stat, station_start_end,
-     ride_time, bike_users_data, birth_yr_data, gender_data]
-	
+     ride_time, bike_users_data, gender_data, birth_yr_data]
+
     # displays processing time for each section
     for x in function_step:
         process(x, df)
 
     # Restarting option
     restart = input("\n Would you like to do another analysis? Type \'y\' or \'n\'.\n")
-    
+
     if restart.upper() == "Y":
         main()
 
 if __name__ == '__main__':
-    main()  
-    
+    main()
