@@ -16,4 +16,5 @@ The dataset contains bike share data for Chicago, Washington and New York cities
 ### Credits
 https://stackoverflow.com/questions/25873772/how-to-filter-a-dataframe-of-dates-by-a-particular-month-day
 https://pandas.pydata.org/pandas-docs/stable/
+https://docs.python.org/3/library/time.html
 
