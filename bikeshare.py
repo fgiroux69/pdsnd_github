@@ -167,7 +167,7 @@ def ride_time(df):
     '''
     What is the total trip bike duration and average trip bike duration?
     '''
-    print('\n 3. For 2017 and for the period of January to June:')
+    print('\n 3. For the year 2017 and for the period of January to June:')
     df['End Time'] = pd.to_datetime(df['End Time'])
     df['Travel Time'] = df['End Time'] - df['Start Time']
     #sum for total trip time, mean for avg trip time
