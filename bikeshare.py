@@ -94,7 +94,7 @@ def day_data(day_sel):
         print('Thursday:    Th')
         print('Friday:      F')
         print('Saturday:    Sa')
-        day = input('\n Please type a day: Su, M, Tu, W, Th, F, Sa, \n')
+        day = input('\n Please type a day of the week: Su, M, Tu, W, Th, F, Sa, \n')
         while day.lower().strip() not in ['su', 'm', 'tu', 'w', 'th', 'f', 'sa']:
             day = input(f'Sorry, "{day}" is not a valid day of the week. Please type a day: Su, M, Tu, W, Th, F, Sa, \n')
         return day.lower().strip()
