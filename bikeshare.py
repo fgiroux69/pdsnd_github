@@ -1,3 +1,4 @@
+# Importing packages and functions
 import time
 import pandas as pd
 import numpy as np
@@ -103,10 +104,12 @@ def day_data(day_sel):
 
 
 def load_file(city):
-    #This function loads the data for the specified city
+    """
+    Loads data for the specified city and filters by month and day if applicable.
+    """
     print('\nThe data is loading.\n')
     df = pd.read_csv(CITY_DATA[city])
-
+    # converts the Start Time column to datetime and creates new month and day of week columns
     df['Start Time'] = pd.to_datetime(df['Start Time'])
     df['month'] = df['Start Time'].dt.month
     df['day_of_week'] = df['Start Time'].dt.weekday_name
@@ -255,7 +258,7 @@ def main():
 
     # display the requested statistics
     function_step = [freq_stat, station_start_end,
-     ride_time, bike_users_data, gender_data, birth_yr_data]
+    ride_time, bike_users_data, gender_data, birth_yr_data]
 
     # displays processing time for each section
     for x in function_step:

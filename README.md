@@ -1,15 +1,20 @@
 ### Date created
-Include the date you created this project and README file.
+August 31th, 2019
 
 ### Project Title
-Replace the Project Title
+Bikeshare Project 
 
 ### Description
-Describe what your project is about and what it does
-
+The Python script is written for the project 3 of the Udacity's Programming for Data Science Nanodegree. I wrote the Python code to import US bike share data, answer interesting questions about those data, and by computing descriptive statistics from the data. I also wrote the script so it allows the users to query the database with different filters.
 ### Files used
-Include the files used
-
+bikeshare.py
+chicago.csv
+new_york_city.csv
+washington.csv
+### Dataset
+The dataset contains bike share data for Chicago, Washington and New York cities. The dataset cover the first six months of the year 2017. The dataset is provided by Motivate, a bike share system provider for many major cities in the United States, to uncover bike share usage patterns.
 ### Credits
-It's important to give proper credit. Add links to any repo that inspired you or blogposts you consulted.
+https://stackoverflow.com/questions/25873772/how-to-filter-a-dataframe-of-dates-by-a-particular-month-day
+https://pandas.pydata.org/pandas-docs/stable/
+https://docs.python.org/3/library/time.html
 
